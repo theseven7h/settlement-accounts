@@ -54,6 +54,16 @@ function SettlementAccounts() {
   }
 };
 
+const maskAccountNumber = (number, currency) => {
+  // Mask international accounts for security
+  if (currency === 'USD') {
+    const lastFour = number.slice(-4);
+    return `**** ${lastFour}`;
+  }
+  // Show full number for local accounts
+  return number;
+};
+
 
   return (
     <div className="page-content">
@@ -123,8 +133,9 @@ function SettlementAccounts() {
                       )}
                     </div>
                     <p className="account-holder">{account.accountHolder}</p>
+                    
                     <div className="account-number">
-                      {account.accountNumber}
+                      {maskAccountNumber(account.accountNumber, account.currency)}
                       <button 
                         className="copy-btn" 
                         onClick={() => copyToClipboard(account.accountNumber)}
@@ -132,17 +143,8 @@ function SettlementAccounts() {
                       >
                         <Copy size={16} />
                       </button>
-                      {account.currency === 'USD' && (
-                        <span style={{ 
-                          fontSize: '12px', 
-                          color: '#6b7280', 
-                          fontWeight: '500',
-                          marginLeft: '4px'
-                        }}>
-                          USD
-                        </span>
-                      )}
                     </div>
+
                     <div className="account-meta">
                       <div className="verified-status">
                         <div className="verified-dot"></div>
