@@ -9,7 +9,7 @@ A full-stack application for managing settlement accounts, built for the VitalSw
 
 > **Note**: Backend hosted on Render's free tier may take 30-60 seconds to wake up on first request after inactivity.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 **Frontend**: React 18, React Router, Lucide Icons, React Toastify  
 **Backend**: Node.js, Express, CORS  
