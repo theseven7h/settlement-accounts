@@ -24,8 +24,8 @@ function SettlementAccounts() {
       setLoading(true);
       setError(null);
       
-      const response = await fetch('http://localhost:3001/api/accounts');
-      
+      const response = await fetch('https://settlement-accounts.onrender.com/api/accounts');
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -133,7 +133,7 @@ const maskAccountNumber = (number, currency) => {
                       )}
                     </div>
                     <p className="account-holder">{account.accountHolder}</p>
-                    
+
                     <div className="account-number">
                       {maskAccountNumber(account.accountNumber, account.currency)}
                       <button 
