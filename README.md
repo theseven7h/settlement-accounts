@@ -15,7 +15,7 @@ A full-stack application for managing settlement accounts, built for the VitalSw
 **Backend**: Node.js, Express, CORS  
 **Deployment**: Vercel (Frontend), Render (Backend)
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 vitalswap-assessment/
@@ -160,6 +160,6 @@ Keeps frontend and backend together for easy review and demonstrates full-stack 
 
 ## Contact
 
-For questions about this project, contact: [jamestauri123@gmail.com]
+For questions about this project, contact: jamestauri123@gmail.com
 
 ---
