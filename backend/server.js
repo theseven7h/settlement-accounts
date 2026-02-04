@@ -6,27 +6,22 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Request logging middleware
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
   next();
 });
 
-// Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// Get all settlement accounts
 app.get('/api/accounts', (req, res) => {
   try {
     const dataPath = path.join(__dirname, 'data', 'accounts.json');
     
-    // Check if file exists
     if (!fs.existsSync(dataPath)) {
       return res.status(500).json({
         success: false,
@@ -35,11 +30,9 @@ app.get('/api/accounts', (req, res) => {
       });
     }
 
-    // Read and parse the JSON file
     const rawData = fs.readFileSync(dataPath, 'utf8');
     const data = JSON.parse(rawData);
 
-    // Validate data structure
     if (!data.accounts || !Array.isArray(data.accounts)) {
       return res.status(500).json({
         success: false,
@@ -48,7 +41,6 @@ app.get('/api/accounts', (req, res) => {
       });
     }
 
-    // Return successful response
     res.json({
       success: true,
       data: data.accounts,
@@ -65,7 +57,6 @@ app.get('/api/accounts', (req, res) => {
   }
 });
 
-// 404 handler for undefined routes
 app.use((req, res) => {
   res.status(404).json({
     success: false,
@@ -74,7 +65,6 @@ app.use((req, res) => {
   });
 });
 
-// Global error handler
 app.use((err, req, res, next) => {
   console.error('Global error handler:', err);
   res.status(err.status || 500).json({
@@ -84,7 +74,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start server
 app.listen(PORT, () => {
   console.log(`Settlement Accounts API running on http://localhost:${PORT}`);
   console.log(`Accounts endpoint: http://localhost:${PORT}/api/accounts`);
