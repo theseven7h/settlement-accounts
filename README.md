@@ -4,8 +4,7 @@ A full-stack application for managing settlement accounts, built for the VitalSw
 
 ## Live Demo
 
-- **Frontend**: https://your-app.vercel.app
-- **Backend API**: https://settlement-accounts.onrender.com/api/accounts
+- **Frontend**: https://settlement-accounts.vercel.app/
 
 > **Note**: Backend hosted on Render's free tier may take 30-60 seconds to wake up on first request after inactivity.
 
